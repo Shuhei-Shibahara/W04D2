@@ -32,5 +32,13 @@ class Board
         (0...8).include?(row) && (0...8).include?(col)
     end
 
+    def move_piece(start_pos, end_pos)
+        if self[start_pos].is_a?(Piece) && valid_pos?(end_pos)
+            self[start_pos], self[end_pos] = nil, self[start_pos]
+            self[end_pos].pos = end_pos
+        else 
+            raise "Make a better move"
+        end
+    end
 
 end
