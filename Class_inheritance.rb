@@ -6,7 +6,6 @@ class Employee
         @name = name
         @title = title
         @salary = salary
-        if 
         @boss = boss
         
     end
@@ -22,7 +21,7 @@ class Manager < Employee
     def initialize
         @employee = []
     end
-    
+
     def bonus(multiplier)
 
     end
