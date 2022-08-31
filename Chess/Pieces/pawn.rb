@@ -31,4 +31,18 @@ class Pawn < Piece
         end
         return pos
     end
+
+    def side_attacks
+        attacks = []
+        moves = [[1,1], [1, -1]]
+        moves.each do |move|
+            row, col = move
+            new_pos = [pos[0] + (forward_dir * row), pos[1] + (forward_dir * col)]
+            if !(self[new_pos].color == color && self[new_pos].color == nil)
+                attacks << new_pos
+            end
+        end
+        attacks
+    end
+    
 end 
