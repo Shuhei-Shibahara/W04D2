@@ -7,11 +7,11 @@ class Board
         (0...8).each do |i|
             if i == 0 || i == 1
                 (0...8).each do |j|
-                    @rows[i][j] = Piece.new(:white, [i,j])
+                    @rows[i][j] = Piece.new(:white, self, [i,j])
                 end
             elsif i == 6 || i == 7
                 (0...8).each do |j|
-                    @rows[i][j] = Piece.new(:black, [i,j])
+                    @rows[i][j] = Piece.new(:black, self, [i,j])
                 end
             end
         end
