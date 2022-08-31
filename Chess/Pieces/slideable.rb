@@ -13,7 +13,7 @@ module Slideable
         position_in_dir = []
         new_pos = add_position(self.pos, [dx,dy] )
         until !self.board.valid_pos?(new_pos) 
-            if board[new_pos] != nil
+            if board[new_pos].color != nil
                 if self.color != board[new_pos].color
                     position_in_dir << new_pos 
                     return position_in_dir

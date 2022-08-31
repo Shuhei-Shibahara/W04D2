@@ -3,7 +3,7 @@ module Stepable
         new_position = []
         move_diffs.each do |change|
             new_pos = add_position(change, pos)
-            new_position << new_pos if self.board.valid_pos?(new_pos) && board[new_pos] == nil
+            new_position << new_pos if self.board.valid_pos?(new_pos) && board[new_pos].color != color
         end
         new_position
     end
