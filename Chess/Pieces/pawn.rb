@@ -2,7 +2,7 @@ require_relative "piece"
 
 class Pawn < Piece
     def moves
-
+        forward_steps + side_attacks
     end
 
     def at_start_row?
@@ -22,27 +22,33 @@ class Pawn < Piece
     end
 
     def forward_steps
-        pos = []
-        if at_start_row?
-            pos << [pos[0]+forward_dir, pos[1]] 
-            pos << [pos[0]+ (2*forward_dir), pos[1]]
-        else
-            pos << [pos[0]+forward_dir, pos[1]] 
+        attacks = []
+        moves = [[1,0], [2, 0]]
+        moves.each do |move|
+            row, col = move
+            new_pos = [pos[0] + (forward_dir * row), pos[1]]
+            if board[new_pos].color == nil
+                attacks << new_pos
+            end
         end
-        return pos
+        attacks
     end
-
+require "byebug"
     def side_attacks
         attacks = []
         moves = [[1,1], [1, -1]]
         moves.each do |move|
             row, col = move
             new_pos = [pos[0] + (forward_dir * row), pos[1] + (forward_dir * col)]
-            if !(self[new_pos].color == color && self[new_pos].color == nil)
+            if !(board[new_pos].color == color && board[new_pos].color == nil)
                 attacks << new_pos
             end
         end
         attacks
     end
-    
 end 
+
+b = Board.new
+pawn = Pawn.new(:black, b, [4,1])
+# p pawn.forward_steps
+p pawn.moves
