@@ -1,7 +1,8 @@
 require_relative "piece"
-require_relative "../board"
-require_relative "null_piece.rb"
+
+
 class Pawn < Piece
+    
     def moves
         forward_steps + side_attacks
     end
@@ -56,10 +57,3 @@ class Pawn < Piece
         attacks
     end
 end 
-
-b = Board.new
-pawn = Pawn.new(:white, b, [1,3])
-p pawn.moves
-b.move_piece(pawn.color,[1,3],[3,3])
-p b[[3,3]] 
-p b[[1,3]]

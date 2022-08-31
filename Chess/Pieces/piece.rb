@@ -9,7 +9,7 @@ class Piece
     end
 
     def inspect
-        "<#piece: pos=#{@pos} color= #{@color}>"
+        "<##{self.class.name}: pos=#{@pos} color= #{@color}>"
     end
 
 end
