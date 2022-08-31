@@ -1,13 +1,15 @@
 require_relative "piece"
 require_relative "stepable"
-class Knight < Piece
+
+class King < Piece
 include Stepable
+
     def move_diffs
         pairs = []
-        arr = [-2, -1, 1, 2]
+        arr = [-1,0,1]
         arr.each do |el1|
             arr.each do |el2|
-                pairs << [el1, el2] if el1.abs != el2.abs
+                pairs << [el1,el2] if (el1 != 0 && el2 != 0) 
             end
         end
         pairs
