@@ -7,9 +7,5 @@ module Slideable
         [pos1.first + pos2.first, pos1.last + pos2.last]
     end
 
-    private 
-
-    HORIZONTAL_DIRS = []
-    DIAGONAL_DIRS = []
 
 end

@@ -1,7 +1,8 @@
 require_relative "piece"
 require_relative "stepable"
+
 class Knight < Piece
-include Stepable
+    include Stepable
     def move_diffs
         pairs = []
         arr = [-2, -1, 1, 2]
