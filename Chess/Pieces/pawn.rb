@@ -24,31 +24,35 @@ class Pawn < Piece
     def forward_steps
         attacks = []
         moves = [[1,0], [2, 0]]
-        moves.each do |move|
+        moves.each_with_index do |move, i|
             row, col = move
             new_pos = [pos[0] + (forward_dir * row), pos[1]]
-            if board[new_pos].color == nil
-                attacks << new_pos
+            if at_start_row? 
+                if board[new_pos] == nil
+                    attacks << new_pos
+                end
+            else
+                if board[new_pos] == nil && i == 0
+                    attacks << new_pos
+                end
             end
         end
         attacks
     end
-require "byebug"
+
     def side_attacks
         attacks = []
         moves = [[1,1], [1, -1]]
         moves.each do |move|
             row, col = move
             new_pos = [pos[0] + (forward_dir * row), pos[1] + (forward_dir * col)]
-            if !(board[new_pos].color == color && board[new_pos].color == nil)
-                attacks << new_pos
+            if board[new_pos] != nil
+                if board[new_pos].color != color
+                    attacks << new_pos
+                end
             end
         end
         attacks
     end
 end 
 
-b = Board.new
-pawn = Pawn.new(:black, b, [4,1])
-# p pawn.forward_steps
-p pawn.moves
