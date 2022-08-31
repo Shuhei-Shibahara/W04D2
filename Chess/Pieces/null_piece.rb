@@ -4,10 +4,13 @@ class NullPiece < Piece
 
     include Singleton
 
-    attr_reader :color, :symbol
+    attr_reader :color
     def initialize
         @color = nil
-        @symbol = ' '
+    end
+
+    def symbol
+        " "
     end
 end
 

@@ -3,6 +3,11 @@ require_relative "piece"
 
 class Queen < Piece
     include Slideable
+    
+    def symbol
+        "♕".colorize(color)
+    end
+    
     def move_dirs
         pairs = []
         arr = [-1,0,1]
