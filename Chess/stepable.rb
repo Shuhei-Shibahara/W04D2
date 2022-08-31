@@ -1,5 +1,4 @@
-module stepable
-
+module Stepable
     def moves
         new_position = []
         move_diffs.each do |change|
@@ -8,7 +7,6 @@ module stepable
         end
         new_position
     end
-
 
     def add_position(pos1, pos2)
         [pos1.first + pos2.first, pos1.last + pos2.last]
