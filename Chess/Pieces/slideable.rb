@@ -1,7 +1,12 @@
 module Slideable
 
     def moves
-
+        new_moves = []
+        move_dirs.each do |ele|
+            row, col = ele
+            new_moves += grow_unblocked_moves_in_dir(row, col)
+        end
+        new_moves
     end
     
     def grow_unblocked_moves_in_dir(dx,dy)
