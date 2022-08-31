@@ -74,7 +74,6 @@ class Board
 
 end
 
-b=Board.new
-p b
+
 
 

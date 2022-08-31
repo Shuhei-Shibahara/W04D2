@@ -1,5 +1,6 @@
 require "colorize"
 require_relative "cursor"
+require_relative "board"
 
 class Display
 
@@ -9,5 +10,13 @@ class Display
     end
 
     def render
+        @board.rows.each do |row|
+            row.each do |piece|
+                print piece.symbol
+            end
+            puts 
+        end
+        nil
+    end
         
 end
