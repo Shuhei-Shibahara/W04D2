@@ -1,5 +1,6 @@
 require_relative "piece"
-
+require_relative "../board"
+require_relative "null_piece.rb"
 class Pawn < Piece
     def moves
         forward_steps + side_attacks
@@ -28,11 +29,11 @@ class Pawn < Piece
             row, col = move
             new_pos = [pos[0] + (forward_dir * row), pos[1]]
             if at_start_row? 
-                if board[new_pos] == nil
+                if board[new_pos].color == nil
                     attacks << new_pos
                 end
             else
-                if board[new_pos] == nil && i == 0
+                if board[new_pos].color == nil && i == 0
                     attacks << new_pos
                 end
             end
@@ -46,7 +47,7 @@ class Pawn < Piece
         moves.each do |move|
             row, col = move
             new_pos = [pos[0] + (forward_dir * row), pos[1] + (forward_dir * col)]
-            if board[new_pos] != nil
+            if board[new_pos].color != nil
                 if board[new_pos].color != color
                     attacks << new_pos
                 end
@@ -56,3 +57,9 @@ class Pawn < Piece
     end
 end 
 
+b = Board.new
+pawn = Pawn.new(:white, b, [1,3])
+p pawn.moves
+b.move_piece(pawn.color,[1,3],[3,3])
+p b[[3,3]] 
+p b[[1,3]]

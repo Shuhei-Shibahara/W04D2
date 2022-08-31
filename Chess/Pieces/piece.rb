@@ -8,4 +8,8 @@ class Piece
         @pos = pos
     end
 
+    def inspect
+        "<#piece: pos=#{@pos} color= #{@color}>"
+    end
+
 end

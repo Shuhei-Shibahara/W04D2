@@ -12,4 +12,3 @@ class NullPiece < Piece
 end
 
 
-
